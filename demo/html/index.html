@@ -10,21 +10,48 @@
 </head>
 <style>
    #player .easy-player {
-        height: 400px;
+        height: 80%;
         position: relative;
     }
+
+    #player1 .easy-player {
+        height: 80%;
+        position: relative;
+    }
+
 </style>
 <body>
     <h4 style="width:600px;margin: auto;">EasyPlayer播放器</h4>
     <br>
-    <div style="width:600px;  height: 400px;position: relative;">
-        <easy-player  id="player" live="true" show-custom-button="true" isH265="true" ></easy-player>
+
+    <div style="width:500px;  height: 550px;position: relative; float:left; margin-right: 70px;">
+        <easy-player id="player" 
+        live="true" 
+        show-custom-button="false" 
+        :showEnterprise="false"
+        isH265="true" ></easy-player>
         <p>列如：http://127.0.0.1:8080/flv/hls/stream.flv <a href="http://www.easydarwin.org/easyplayer/" target="_blank"> 在线演示</a></p>
         <p style="color:red;font-size: 12px;">注意：本实例需要以服务方式启动 <a href="https://blog.csdn.net/weixin_43194037/article/details/108885134" target="_blank">搭建服务教程</a></p> 
-        <input type="text" id="value">
+        <input type="text" id="value" size="70">
         <button id="btn">播放</button>
         <button id="btnSnap">快照</button>
     </div>
+
+
+    <div style="width:500px;  height: 550px;position: relative; float:left;margin-right: 20px;">
+        <easy-player  id="player1"
+        live="true" 
+        show-custom-button="false" 
+        :showEnterprise="false"
+        isH265="true" ></easy-player>
+        <p>列如：http://127.0.0.1:8080/flv/hls/stream.flv <a href="http://www.easydarwin.org/easyplayer/" target="_blank"> 在线演示</a></p>
+        <p style="color:red;font-size: 12px;">注意：本实例需要以服务方式启动 <a href="https://blog.csdn.net/weixin_43194037/article/details/108885134" target="_blank">搭建服务教程</a></p> 
+        <input type="text1" id="value1" size="80">
+        <button id="btn1">播放</button>
+        <button id="btnSnap1">快照</button>
+    </div>
+
+
     <script>
         let vuePlayer = null
         var btn = document.getElementById('btn'); 
@@ -44,6 +71,26 @@
           var attrs = player.attributes;
           console.log('player', vuePlayer)
           vuePlayer.snapshot()
+        }
+
+        let vuePlayer1 = null
+        var btn1 = document.getElementById('btn1'); 
+        var btnSnap1 = document.getElementById('btnSnap1'); 
+        let player1 = document.getElementById('player1')
+        
+        // 地址栏
+        var value1 = document.getElementById('value1');
+        //播放事件 传入地址播放
+        btn1.onclick = function(){
+          console.log('player1', player)
+          $('#player1').attr('video-url',value1.value)
+
+        }
+        btnSnap1.onclick = function(){
+          if (!vuePlaye1r) vuePlayer1 = player.getVueInstance(); // 获取播放器实例
+          var attrs = player1.attributes;
+          console.log('player', vuePlayer1)
+          vuePlayer1.snapshot()
         }
     
     </script>
